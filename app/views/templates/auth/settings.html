@@ -1,0 +1,194 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Settings - LLM Chatbot{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="settings-card">
+        <div class="settings-header">
+            <h1><i class="fas fa-cog"></i> Settings</h1>
+            <p>Customize your chat experience</p>
+        </div>
+        
+        <form method="POST" action="{{ url_for('auth.update_settings') }}">
+            <div class="settings-section">
+                <h3><i class="fas fa-user"></i> Account Settings</h3>
+                
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" value="{{ user.username }}" disabled>
+                    <small style="color: #6c757d; font-size: 0.8rem;">Username cannot be changed</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" value="{{ user.email }}" disabled>
+                    <small style="color: #6c757d; font-size: 0.8rem;">Email cannot be changed</small>
+                </div>
+            </div>
+            
+
+          
+            <div style="display: flex; gap: 1rem; justify-content: space-between;">
+                <a href="{{ url_for('chat.home') }}" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Chat
+                </a>
+                
+                <button type="submit" class="save-btn">
+                    <i class="fas fa-save"></i> Save Settings
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    body {
+        padding: 2rem;
+    }
+    
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .settings-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .settings-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .settings-header h1 {
+        color: var(--secondary);
+        font-weight: 600;
+    }
+    
+    .settings-section {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .settings-section h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+    
+    .form-group input, .form-group select {
+        width: 100%;
+        padding: 0.8rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+    }
+    
+    .form-group input:focus, .form-group select:focus {
+        outline: none;
+        border-color: var(--accent);
+    }
+    
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+    
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 34px;
+    }
+    
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+        background-color: var(--primary);
+    }
+    
+    input:checked + .slider:before {
+        transform: translateX(26px);
+    }
+    
+    .back-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .back-btn:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+    }
+    
+    .save-btn {
+        background: var(--success);
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .save-btn:hover {
+        background: #3aacd7;
+        transform: translateY(-2px);
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,21 @@
+Flask
+Flask-SQLAlchemy
+Flask-Login
+Flask-Migrate
+python-dotenv
+langchain
+langchain-community
+langchain-core
+langchain-ollama
+faiss-cpu
+# numpy
+scikit-learn
+requests
+beautifulsoup4
+googlesearch-python
+PyMySQL
+langchain-openai
+lmstudio
+psycopg2-binary
+psycopg2
+pgvector
