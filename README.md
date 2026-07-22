@@ -1,4 +1,4 @@
-# Visionary AI Chatbot
+# AI Chatbot
 
 A sophisticated, multimodal AI Chatbot application built with Flask, powered by local Large Language Models (LM Studio) and advanced Retrieval-Augmented Generation (RAG). This application features a custom self-repair mechanism (Model Context Protocol), dynamic web-search fallback, and persistent local MySQL storage.
 
